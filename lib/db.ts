@@ -111,3 +111,68 @@ export async function getCreneau(id: string): Promise<Creneau | undefined> {
     .maybeSingle();
   return data ?? undefined;
 }
+
+// ── Fonctions admin — boucle 4 ─────────────────────────────────
+
+export async function getReservations(): Promise<Reservation[]> {
+  if (modeDemo) return memoire.getReservations();
+  // Les plus proches d'abord (spec §4) : tri par date du créneau réservé.
+  const { data, error } = await supabase()
+    .from("reservations")
+    .select("*, creneaux(date_heure)")
+    .order("date_heure", { referencedTable: "creneaux", ascending: true });
+  if (error) throw error;
+  return (data as (Reservation & { creneaux: { date_heure: string } })[])
+    .sort((a, b) => a.creneaux.date_heure.localeCompare(b.creneaux.date_heure))
+    .map(({ creneaux: _c, ...r }) => r);
+}
+
+export async function setStatutReservation(
+  id: string,
+  statut: Reservation["statut"],
+): Promise<void> {
+  if (modeDemo) return memoire.setStatutReservation(id, statut);
+  const { error } = await supabase()
+    .from("reservations")
+    .update({ statut })
+    .eq("id", id);
+  if (error) throw error;
+}
+
+export async function getTousCreneauxFuturs(): Promise<Creneau[]> {
+  if (modeDemo) return memoire.getTousCreneauxFuturs();
+  const { data, error } = await supabase()
+    .from("creneaux")
+    .select("*")
+    .gt("date_heure", new Date().toISOString())
+    .order("date_heure");
+  if (error) throw error;
+  return data;
+}
+
+export async function ajouterCreneau(
+  consultationId: string,
+  dateHeureIso: string,
+): Promise<void> {
+  if (modeDemo) return memoire.ajouterCreneau(consultationId, dateHeureIso);
+  const { error } = await supabase().from("creneaux").insert({
+    id: `${consultationId}-${dateHeureIso}`,
+    consultation_id: consultationId,
+    date_heure: dateHeureIso,
+  });
+  if (error) throw error;
+}
+
+// Un créneau réservé ne peut PAS être supprimé (spec §5) : la règle
+// vit dans la couche de données, l'interface ne fait que la refléter.
+export async function supprimerCreneau(id: string): Promise<boolean> {
+  if (modeDemo) return memoire.supprimerCreneau(id);
+  const { data } = await supabase()
+    .from("creneaux")
+    .delete()
+    .eq("id", id)
+    .eq("reserve", false) // la condition EST la règle
+    .select()
+    .maybeSingle();
+  return data !== null;
+}
