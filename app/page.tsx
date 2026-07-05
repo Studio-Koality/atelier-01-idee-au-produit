@@ -22,7 +22,7 @@ export default function Catalogue() {
               <h2 className="text-lg font-semibold">{c.nom}</h2>
               <p className="my-1 flex gap-3 text-sm">
                 <span className="opacity-60">{c.duree_minutes} min</span>
-                <span className="font-bold text-[--roux]">
+                <span className="font-bold text-(--roux)">
                   {c.prix_euros} €
                 </span>
               </p>
