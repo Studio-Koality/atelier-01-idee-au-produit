@@ -45,7 +45,7 @@ Décision prise en boucle 4, la spec était muette : voir BOUCLE-4-PLAN.md.)
 | Cas limite soulevé par l'agent | Décision |
 |---|---|
 | Deux patients réservent le même créneau au même moment | Le premier paiement validé gagne ; l'autre voit « créneau plus disponible » et revient au catalogue |
-| Le patient ferme la page pendant le paiement | Le créneau est libéré au bout de 10 minutes sans paiement confirmé |
+| Le patient ferme la page pendant le paiement | Le créneau est libéré à l'expiration de la session de paiement. ~~10 minutes~~ **30 minutes** : amendé en boucle 5, Stripe impose 30 min minimum. La spec suit le réel, pas l'inverse |
 | Le patient se trompe d'email | Assumé v1 : pas de vérification d'email, le récap à l'écran fait foi |
 | Le praticien supprime un créneau déjà réservé | Interdit dans l'admin : un créneau réservé ne peut pas être supprimé, seulement annulé (statut) |
 | Réservation à 2h du matin pour le jour même | Autorisé : aucune règle de délai en v1, à observer sur données réelles |

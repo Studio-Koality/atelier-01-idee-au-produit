@@ -112,6 +112,62 @@ export async function getCreneau(id: string): Promise<Creneau | undefined> {
   return data ?? undefined;
 }
 
+// ── Fonctions paiement — boucle 5 ──────────────────────────────
+
+// Prendre le créneau sans créer de réservation : le paiement décidera.
+// Même arbitrage que reserverCreneau : l'UPDATE conditionnel tranche.
+export async function prendreCreneau(id: string): Promise<Creneau | null> {
+  if (modeDemo) return memoire.prendreCreneau(id);
+  const { data } = await supabase()
+    .from("creneaux")
+    .update({ reserve: true })
+    .eq("id", id)
+    .eq("reserve", false)
+    .select()
+    .maybeSingle();
+  return data;
+}
+
+// Paiement abandonné : le créneau redevient disponible (spec §5, cas 2).
+export async function libererCreneau(id: string): Promise<void> {
+  if (modeDemo) return memoire.libererCreneau(id);
+  await supabase().from("creneaux").update({ reserve: false }).eq("id", id);
+}
+
+export async function creerReservationPayee(
+  creneauId: string,
+  nom: string,
+  email: string,
+  sessionId: string,
+): Promise<Reservation> {
+  if (modeDemo)
+    return memoire.creerReservationPayee(creneauId, nom, email, sessionId);
+  const { data, error } = await supabase()
+    .from("reservations")
+    .insert({
+      creneau_id: creneauId,
+      nom_patient: nom,
+      email_patient: email,
+      stripe_session_id: sessionId,
+    })
+    .select()
+    .single();
+  if (error) throw error;
+  return data;
+}
+
+export async function getReservationParSession(
+  sessionId: string,
+): Promise<Reservation | undefined> {
+  if (modeDemo) return memoire.getReservationParSession(sessionId);
+  const { data } = await supabase()
+    .from("reservations")
+    .select("*")
+    .eq("stripe_session_id", sessionId)
+    .maybeSingle();
+  return data ?? undefined;
+}
+
 // ── Fonctions admin — boucle 4 ─────────────────────────────────
 
 export async function getReservations(): Promise<Reservation[]> {

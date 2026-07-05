@@ -5,6 +5,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getConsultation, getCreneauxDisponibles } from "@/lib/db";
 import { reserver } from "@/lib/actions";
+import { modePaiement } from "@/lib/stripe";
 import { formatCreneau } from "@/lib/format";
 
 export default async function Detail({
@@ -102,7 +103,7 @@ export default async function Detail({
             type="submit"
             className="mt-6 w-full rounded-2xl bg-(--roux) py-4 text-lg font-bold text-white transition-opacity hover:opacity-90"
           >
-            Réserver · {consultation.prix_euros} €
+            {modePaiement ? "Réserver et payer" : "Réserver"} · {consultation.prix_euros} €
           </button>
         </form>
       )}

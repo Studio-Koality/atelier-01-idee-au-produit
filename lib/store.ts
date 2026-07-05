@@ -98,6 +98,49 @@ export function ajouterCreneau(
   });
 }
 
+// ── Fonctions paiement — boucle 5 ──────────────────────────────
+
+// Prendre le créneau sans créer de réservation : le paiement décidera.
+export function prendreCreneau(id: string): Creneau | null {
+  const creneau = g.__creneaux!.find((c) => c.id === id);
+  if (!creneau || creneau.reserve) return null;
+  creneau.reserve = true;
+  return creneau;
+}
+
+// Paiement abandonné : le créneau redevient disponible (spec §5, cas 2).
+export function libererCreneau(id: string): void {
+  const creneau = g.__creneaux!.find((c) => c.id === id);
+  if (creneau) creneau.reserve = false;
+}
+
+export function creerReservationPayee(
+  creneauId: string,
+  nom: string,
+  email: string,
+  sessionId: string,
+): Reservation {
+  const reservation: Reservation & { stripe_session_id?: string } = {
+    id: `resa-${g.__reservations!.length + 1}`,
+    creneau_id: creneauId,
+    nom_patient: nom,
+    email_patient: email,
+    statut: "confirmee",
+    creee_le: new Date().toISOString(),
+    stripe_session_id: sessionId,
+  };
+  g.__reservations!.push(reservation);
+  return reservation;
+}
+
+export function getReservationParSession(
+  sessionId: string,
+): Reservation | undefined {
+  return g.__reservations!.find(
+    (r) => (r as Reservation & { stripe_session_id?: string }).stripe_session_id === sessionId,
+  );
+}
+
 // Un créneau réservé ne peut PAS être supprimé (spec §5) : la règle
 // vit ici, dans la couche de données. Une interface se contourne.
 export function supprimerCreneau(id: string): boolean {

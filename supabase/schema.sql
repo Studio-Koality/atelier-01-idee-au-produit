@@ -24,7 +24,9 @@ create table reservations (
   email_patient text not null,
   statut text not null default 'confirmee'
     check (statut in ('confirmee', 'honoree', 'annulee')),
-  creee_le timestamptz not null default now()
+  creee_le timestamptz not null default now(),
+  -- Boucle 5 : lien vers la session de paiement Stripe (mode test).
+  stripe_session_id text unique
 );
 
 -- L'app passe par la clé service_role (côté serveur uniquement) :
