@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+:root {
+  --creme: #faf6f0;
+  --encre: #2b2118;
+  --roux: #e07a3f;
+  --sauge: #7a9b76;
+}
+
+body {
+  background: var(--creme);
+  color: var(--encre);
+}

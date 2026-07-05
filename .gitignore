@@ -1,0 +1,17 @@
+# ── Vendors uniquement ──────────────────────────────────────
+# Règle de l'atelier : TOUT est committé (config, .env de démo,
+# CLAUDE.md, plans, specs). Seuls les fichiers reconstruisibles
+# par une commande d'installation sont ignorés.
+node_modules/
+.next/
+.vercel/
+
+# ── Ré-inclusions ───────────────────────────────────────────
+# Certaines machines ont un .gitignore GLOBAL (~/.gitignore_global)
+# qui exclut les fichiers d'agents. Ici c'est l'inverse : le contexte
+# de l'agent fait partie du produit, on le versionne comme du code.
+!CLAUDE.md
+!AGENTS.md
+!.claude/
+!.claude/**
+!.mcp.json
