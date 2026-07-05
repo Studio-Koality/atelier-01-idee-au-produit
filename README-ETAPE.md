@@ -1,35 +1,52 @@
-# 📍 Vous êtes ici : Étape 2 — Le produit a un visage
+# 📍 Vous êtes ici : Étape 3 — Le produit existe
 
-> Branche `step-2-maquette`. Toujours zéro ligne de code produit. C'est voulu.
+> Branche `step-3-boucles`. Quatre boucles plan → production → vérification,
+> et le produit fait (presque) tout ce que la spec demande.
 
 ## Ce qui vient de se passer
 
-1. On a dérivé un **prompt de maquettage** depuis la spec (`maquette/PROMPT-STITCH.md`) : chaque phrase du prompt vient de `docs/SPEC.md`, rien n'est inventé.
-2. On a itéré dans **Google Stitch** jusqu'à ce que les 3 écrans racontent le parcours. Pas jusqu'à ce que ce soit parfait : jusqu'à ce que ce soit **juste**.
-3. Les choix actés sont figés dans `maquette/REFERENCE-VISUELLE.md` (tokens, formes, interdits).
-4. `maquette/maquette.html` est la référence : double-cliquez dessus, c'est le produit cible.
+Quatre boucles, chacune en trois temps, chacune tracée dans `docs/boucles/` :
 
-## Pourquoi maquetter AVANT de coder ?
+| Boucle | Objectif | La leçon qu'elle a laissée |
+|---|---|---|
+| 1 | Le catalogue | Le build passait, l'écran était faux : **vérifier n'est pas builder** |
+| 2 | Réserver un créneau | Le fuseau du serveur : **le test local ne voit pas ce que la prod verra** |
+| 3 | Supabase, la base arbitre | **Testé ≠ relu ≠ non couvert** : un rapport honnête étiquette les trois |
+| 4 | L'admin du praticien | Spec muette → question posée, **la spec se répare à la source** |
 
-Changer une couleur dans Stitch : 10 secondes. La même correction une fois le code
-écrit : une boucle entière de l'étape 3. La maquette attrape les malentendus au
-moment où ils sont les moins chers. C'est de la **vérification en amont**.
+Aucune de ces leçons n'était prévue. Toutes viennent d'écarts réels attrapés
+par la vérification. C'est ça, le cœur de la méthode : la boucle ne produit
+pas seulement du code, elle produit de la connaissance sur votre produit.
 
-## Si vous faites l'atelier avec VOTRE idée
+## Comment lire cette étape
 
-Dérivez votre prompt Stitch de VOTRE `SPEC.md` (le canevas est dans
-`PROMPT-STITCH.md`). Gardez la structure 3 écrans : catalogue, détail + action,
-confirmation. C'est le même squelette pour tout le monde.
+- L'historique git EST le support : `git log --oneline` raconte les boucles.
+- Chaque `BOUCLE-N-PLAN.md` dit ce qu'on va faire ET ce qu'on ne va pas faire.
+- Chaque `BOUCLE-N-VERIF.md` dit ce qui est prouvé, ce qui est plausible,
+  ce qui reste ouvert. Sans complaisance : les écarts y sont, les incidents aussi.
+
+## Essayer
+
+```bash
+npm install && npm run dev
+```
+
+- Le parcours patient : http://localhost:3000
+- L'admin : http://localhost:3000/admin?cle=ronron-demo
+- Tout tourne en mode démo (données en mémoire), aucun service externe requis.
 
 ## ⚡ Encart dev
 
-`REFERENCE-VISUELLE.md` transforme la maquette en **design tokens exploitables par
-l'agent**. Une image seule laisse l'agent interpréter ; des tokens hex + des règles
-d'usage (« un seul accent roux par écran ») + des interdits explicites réduisent
-l'espace des interprétations à presque rien. Maquette = spec visuelle, tokens = son
-API. Notez aussi la section « Ce que la maquette interdit » : le scope négatif,
-encore lui.
+Trois patterns à retenir de ces boucles :
+1. **Le harnais grandit avec le produit** : `/verifier` est arrivé en boucle 1,
+   les règles métier sont descendues dans la couche de données en boucle 4.
+2. **`lib/db.ts` comme frontière** : les écrans ignorent qui répond (mémoire ou
+   Supabase). Changer de backend n'a pas touché un seul écran.
+3. **L'historique comme documentation** : commits atomiques par temps de boucle
+   (plan / production / vérification). `git log` se lit comme un journal de bord,
+   et `git diff boucle-N..boucle-M` montre exactement ce qu'une décision a coûté.
 
 ## Étape suivante
 
-`git checkout step-3-boucles` : maintenant, et seulement maintenant, on code. Enfin... on fait coder.
+`git checkout step-4-deploy` : la dette annoncée depuis la boucle 2 (le paiement),
+la mise en ligne, et la facture réelle.
