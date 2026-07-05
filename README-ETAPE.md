@@ -1,35 +1,33 @@
-# 📍 Vous êtes ici : Étape 0 — Le point de départ
+# 📍 Vous êtes ici : Étape 1 — L'intention cadrée
 
-> Branche `step-0-setup`. Si vous lisez ceci, vous avez la coquille de départ. Tout va bien.
+> Branche `step-1-intention`. Le produit existe maintenant... sur papier. Zéro ligne de code produit.
 
-## Ce que contient cette étape
+## Ce qui vient de se passer
 
-- Une application Next.js **vide** : elle démarre, elle affiche une page, c'est tout.
-- Un fichier `CLAUDE.md` : le brief permanent de votre agent, avec 3 règles de travail.
-- Un dossier `.claude/` : le **harnais** de l'agent (ses permissions, ses garde-fous). Lisez son `README.md`, il est court.
-- Un `.gitignore` volontairement minimal : dans cet atelier, **tout est committé** (la config, les specs, les plans, le contexte de l'agent). Seuls les dossiers reconstruisibles (`node_modules`) sont ignorés.
+1. L'agent nous a **interviewés** (protocole : `docs/INTERVIEW.md`) au lieu de recevoir un prompt vague.
+2. L'interview a rempli le gabarit `docs/SPEC-TEMPLATE.md` → résultat : `docs/SPEC.md`.
+3. L'agent a **énuméré lui-même les cas limites**, nous avons tranché chacun (section 5 de la spec).
+4. `CLAUDE.md` connaît maintenant le produit et sa règle d'or : *la spec gagne toujours*.
 
-## Pourquoi si peu de code ?
+## Le fichier important
 
-Parce que le code n'est pas le sujet. À cette étape, la seule chose qui compte,
-c'est que votre environnement fonctionne et que votre agent connaît ses règles.
+`docs/SPEC.md` — tout le reste de l'atelier s'appuie dessus. La maquette (étape 2)
+l'illustre, les boucles (étape 3) l'implémentent, la vérification s'y réfère.
 
-## Vérifier que ça marche
+## Si vous faites l'atelier avec VOTRE idée
 
-```bash
-npm install
-npm run dev
-```
-
-Ouvrez http://localhost:3000 : vous devez voir la page d'accueil de la coquille.
+Rejouez le protocole : copiez le prompt de `docs/INTERVIEW.md` dans une nouvelle
+session et remplissez `SPEC-TEMPLATE.md` avec votre sujet. Le squelette de
+l'application est le même pour tout le monde : des choses à montrer (catalogue),
+une action à déclencher. Seule la spec change de peau.
 
 ## ⚡ Encart dev
 
-Le `CLAUDE.md` est hiérarchique : `~/.claude/CLAUDE.md` (global, toutes vos sessions)
-puis `CLAUDE.md` à la racine du projet, puis `CLAUDE.local.md` (non versionné d'habitude,
-versionné ici pour la pédagogie). L'agent fusionne le tout. Traitez ces fichiers comme
-du code : relus, versionnés, améliorés à chaque friction.
+Notez la section « Ce que le produit NE fait PAS » : c'est du scope negatif
+explicite. Sans elle, l'agent « améliore » spontanément (comptes utilisateurs,
+emails...) et chaque amélioration non demandée est une boucle de correction.
+Le scope négatif dans CLAUDE.md est le garde-fou le moins cher du projet.
 
 ## Étape suivante
 
-`git checkout step-1-intention` ou suivez l'animateur : on va cadrer l'intention.
+`git checkout step-2-maquette` : on donne un visage au produit, toujours sans coder.
