@@ -3,6 +3,20 @@
 > Usage interne. Timings, points de bascule, et les pièges RÉELLEMENT
 > rencontrés en construisant ce repo (aucun n'est théorique).
 
+## Le principe pédagogique : faire d'abord, nommer après
+
+**~38 min de talk sur 3h30, tout le reste en TP.** Chaque étape suit le même
+rythme : consigne courte (la carte `ATELIER.md` de la branche) → les
+participants FONT → un debrief court met des mots sur ce qu'ils viennent de
+vivre. Une seule idée nommée par étape.
+
+Les concepts du whitepaper (harnais 10/90, 80/20, conductor/orchestrator,
+chiffres METR) ne sont PAS en slides : ils sont **en réserve** dans les notes
+speaker (marqueur 📦), à distiller à l'oral au moment précis où un participant
+vit la situation correspondante. Un concept nommé sur du vécu s'ancre ; le même
+en slide préalable s'oublie. Le spectre vibe → agentic n'apparaît qu'en
+clôture, comme carte de la journée.
+
 ## Le déroulé minuté
 
 | Heure | Bloc | Le geste | Le concept à planter |
