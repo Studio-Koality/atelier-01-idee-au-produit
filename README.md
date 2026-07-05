@@ -8,6 +8,10 @@ Ce repo n'est pas seulement le résultat : **c'est la méthode, rejouable**.
 Chaque étape de l'atelier est une branche, chaque boucle de travail est
 tracée dans l'historique, chaque écart trouvé en vérification est documenté.
 
+> **Vous êtes en atelier, là, maintenant ?** N'ouvrez que [`ATELIER.md`](ATELIER.md) :
+> 10 lignes par étape, c'est tout ce qu'il vous faut. Le reste de ce repo est
+> la lecture du soir et d'après.
+
 ## La carte
 
 | Branche | Vous y trouvez | L'idée clé |
