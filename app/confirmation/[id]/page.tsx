@@ -6,7 +6,7 @@ import {
   getReservation,
   getCreneau,
   getConsultation,
-} from "@/lib/store";
+} from "@/lib/db";
 import { formatDateLongue } from "@/lib/format";
 
 export default async function Confirmation({
@@ -15,10 +15,10 @@ export default async function Confirmation({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const reservation = getReservation(id);
+  const reservation = await getReservation(id);
   if (!reservation) notFound();
-  const creneau = getCreneau(reservation.creneau_id)!;
-  const consultation = getConsultation(creneau.consultation_id)!;
+  const creneau = (await getCreneau(reservation.creneau_id))!;
+  const consultation = (await getConsultation(creneau.consultation_id))!;
 
   const prenom = reservation.nom_patient.split(" ")[0];
 

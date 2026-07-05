@@ -2,9 +2,13 @@
 // Le catalogue EST l'accueil : pas de page d'accueil séparée (référence visuelle).
 
 import Link from "next/link";
-import { consultations } from "@/lib/data";
+import { getConsultations } from "@/lib/db";
 
-export default function Catalogue() {
+// Rendu à la demande : le catalogue reflète la base, pas le moment du build.
+export const dynamic = "force-dynamic";
+
+export default async function Catalogue() {
+  const consultations = await getConsultations();
   return (
     <main className="mx-auto max-w-md p-6">
       <h1 className="text-3xl font-bold">Cabinet Ronron 🐈</h1>

@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getConsultation, getCreneauxDisponibles } from "@/lib/store";
+import { getConsultation, getCreneauxDisponibles } from "@/lib/db";
 import { reserver } from "@/lib/actions";
 import { formatCreneau } from "@/lib/format";
 
@@ -16,10 +16,10 @@ export default async function Detail({
 }) {
   const { id } = await params;
   const { erreur } = await searchParams;
-  const consultation = getConsultation(id);
+  const consultation = await getConsultation(id);
   if (!consultation) notFound();
 
-  const creneaux = getCreneauxDisponibles(id);
+  const creneaux = await getCreneauxDisponibles(id);
 
   return (
     <main className="mx-auto max-w-md p-6">

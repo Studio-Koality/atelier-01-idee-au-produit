@@ -4,7 +4,7 @@
 // Elle valide, enregistre, puis redirige vers la confirmation.
 
 import { redirect } from "next/navigation";
-import { reserverCreneau, getCreneau } from "./store";
+import { reserverCreneau, getCreneau } from "./db";
 
 export async function reserver(formData: FormData) {
   const creneauId = String(formData.get("creneau") ?? "");
@@ -14,19 +14,23 @@ export async function reserver(formData: FormData) {
   // Le formulaire ne demande QUE nom et email (spec §3) : chaque champ
   // en plus fait fuir un patient. La validation reste donc minimale.
   if (!creneauId || !nom || !email.includes("@")) {
-    redirect(`/consultation/${creneauIdVersConsultation(creneauId)}?erreur=champs`);
+    redirect(
+      `/consultation/${await creneauIdVersConsultation(creneauId)}?erreur=champs`,
+    );
   }
 
-  const reservation = reserverCreneau(creneauId, nom, email);
+  const reservation = await reserverCreneau(creneauId, nom, email);
   if (!reservation) {
     // Créneau parti entre-temps : premier arrivé gagne (spec §5),
     // l'autre revient au choix des créneaux.
-    redirect(`/consultation/${creneauIdVersConsultation(creneauId)}?erreur=creneau`);
+    redirect(
+      `/consultation/${await creneauIdVersConsultation(creneauId)}?erreur=creneau`,
+    );
   }
 
   redirect(`/confirmation/${reservation.id}`);
 }
 
-function creneauIdVersConsultation(creneauId: string): string {
-  return getCreneau(creneauId)?.consultation_id ?? "";
+async function creneauIdVersConsultation(creneauId: string): Promise<string> {
+  return (await getCreneau(creneauId))?.consultation_id ?? "";
 }
