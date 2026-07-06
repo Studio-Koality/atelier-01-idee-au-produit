@@ -38,6 +38,9 @@ allers-retours**.
 ## 4. Le côté admin (le praticien)
 
 Sans développeur, le praticien doit pouvoir :
+(Accès : une clé simple dans l'URL, stockée dans la config. Pas de comptes.
+Décision prise en boucle admin, la spec était muette : voir
+`docs/boucles/ADMIN-PLAN.md`.)
 
 - **Voir la liste des réservations** (qui, quoi, quand), les plus proches d'abord
 - **Ajouter / retirer des créneaux** de disponibilité
