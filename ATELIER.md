@@ -1,11 +1,11 @@
-# 📐 h2 · La spec (l'intention)
+# 🔁 h3 · La boucle + la vérification
 
-**Douleur :** réexpliquer ce qu'on veut à chaque prompt.
+**Douleur :** « ça a l'air de marcher » ne suffit pas.
 
 **À faire :**
-1. Interview inversée : l'agent vous questionne, vous tranchez.
-2. Remplissez la spec, et le scope négatif.
+1. Plan (vous validez), production, /verifier.
+2. Lisez le rapport en entier.
 
-**Harnais ajouté :** une spec, une commande /goal.
-**Fini quand :** la spec est la source de vérité, plus le prompt.
-**Concept :** la spec gagne, le produit vit dans la spec.
+**Harnais ajouté :** /verifier, un format de rapport (testé / relu / non couvert).
+**Fini quand :** vous avez attrapé un écart que le build ne voit pas.
+**Concept :** vérifier n'est pas builder.
