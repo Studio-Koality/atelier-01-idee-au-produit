@@ -25,9 +25,8 @@ on corrige d'abord ICI, pas dans le prompt suivant.
 
 ## Ce qu'on construit
 
-Cabinet Ronron : un praticien veut que ses patients réservent leurs
-consultations en ligne, sans appels téléphoniques.
-
-(Une phrase suffit pour l'instant. Ce paragraphe est le plus fragile du
-contrat : au prochain barreau, il deviendra une vraie spec et pointera
-vers elle.)
+**La source de vérité est `docs/SPEC.md`.** Lis-la avant de produire quoi
+que ce soit, et vérifie chaque production contre elle, section par section,
+scope négatif compris. Quand le code et la spec divergent, c'est la spec
+qui gagne. Quand le réel contredit la spec, on l'amende par écrit, jamais
+en silence.
