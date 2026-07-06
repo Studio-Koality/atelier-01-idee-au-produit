@@ -1,12 +1,11 @@
-# 🧠 h1 · Le contexte (CLAUDE.md)
+# 📐 h2 · La spec (l'intention)
 
-**Douleur :** l'agent devine, oublie, diverge.
+**Douleur :** réexpliquer ce qu'on veut à chaque prompt.
 
 **À faire :**
-1. Écrivez un CLAUDE.md, le contrat de l'agent.
-2. Relancez la même demande : il se tient.
+1. Interview inversée : l'agent vous questionne, vous tranchez.
+2. Remplissez la spec, et le scope négatif.
 
-**Harnais ajouté :** CLAUDE.md.
-**Fini quand :** l'agent respecte vos conventions sans les redire.
-**Concept :** la gestion du contexte, la fenêtre finie.
-**Creuser :** /context, sous-agents, pruning.
+**Harnais ajouté :** une spec, une commande /goal.
+**Fini quand :** la spec est la source de vérité, plus le prompt.
+**Concept :** la spec gagne, le produit vit dans la spec.
