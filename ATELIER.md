@@ -1,11 +1,12 @@
-# 🎢 h0 · Vibe coding (le modèle nu)
+# 🧠 h1 · Le contexte (CLAUDE.md)
 
-**La douleur qu'on fait vivre :** prompter sans filet.
+**Douleur :** l'agent devine, oublie, diverge.
 
 **À faire :**
-1. Sans CLAUDE.md, sans spec : « fais-moi une page de réservation ».
-2. Regardez ça marcher... puis tomber (build vert, écran faux).
+1. Écrivez un CLAUDE.md, le contrat de l'agent.
+2. Relancez la même demande : il se tient.
 
-**Le harnais ici :** aucun. C'est le point de départ, exprès.
-**C'est fini quand :** ça marche à moitié et vous avez vu le mur.
-**Le concept :** la magie et son plafond.
+**Harnais ajouté :** CLAUDE.md.
+**Fini quand :** l'agent respecte vos conventions sans les redire.
+**Concept :** la gestion du contexte, la fenêtre finie.
+**Creuser :** /context, sous-agents, pruning.
