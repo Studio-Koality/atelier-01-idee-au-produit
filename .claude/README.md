@@ -1,4 +1,4 @@
-# .claude/ — Le harnais de votre agent
+# .claude/ · Le harnais de votre agent
 
 Ce dossier configure la façon dont l'agent travaille DANS ce projet.
 Il est versionné exprès : le harnais fait partie du produit, au même titre

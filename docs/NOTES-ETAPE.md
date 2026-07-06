@@ -1,4 +1,4 @@
-# 📍 Vous êtes ici : Étape 0 — Le point de départ
+# 📍 Vous êtes ici : Étape 0 · Le point de départ
 
 > Branche `step-0-setup`. Si vous lisez ceci, vous avez la coquille de départ. Tout va bien.
 

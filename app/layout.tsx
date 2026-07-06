@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Atelier 01 — De l'idée au produit",
+  title: "Atelier 01 · De l'idée au produit",
   description: "Coquille de départ de l'atelier Koality Academy",
 };
 
