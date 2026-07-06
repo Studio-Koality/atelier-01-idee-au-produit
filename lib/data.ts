@@ -32,6 +32,14 @@ export const consultations: Consultation[] = [
 // Créneaux générés sur les jours à venir, à heures fixes par consultation.
 // La date de génération est volontairement relative : les créneaux sont
 // toujours « la semaine prochaine », quel que soit le jour de l'atelier.
+//
+// Les heures du cabinet sont des heures de PARIS, pas des heures du serveur
+// (leçon de la vérification de la boucle admin : sans fuseau explicite, le
+// même « 10h00 » désignait un instant différent selon le serveur).
+// Offset d'été codé en dur : assumé pour un bac à sable, une vraie prod
+// utiliserait une bibliothèque de fuseaux.
+const OFFSET_CABINET = "+02:00";
+
 function creneauxDemo(): Creneau[] {
   const horaires: Record<string, number[]> = {
     premiere: [9, 14],
@@ -45,14 +53,18 @@ function creneauxDemo(): Creneau[] {
     const date = new Date(base);
     date.setDate(date.getDate() + jour);
     if (date.getDay() === 0) continue; // fermé le dimanche
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, "0");
+    const d = String(date.getDate()).padStart(2, "0");
     for (const [consultationId, heures] of Object.entries(horaires)) {
       for (const h of heures) {
-        const creneau = new Date(date);
-        creneau.setHours(Math.floor(h), (h % 1) * 60);
+        const hh = String(Math.floor(h)).padStart(2, "0");
+        const mn = String((h % 1) * 60).padStart(2, "0");
+        const instant = new Date(`${y}-${m}-${d}T${hh}:${mn}:00${OFFSET_CABINET}`);
         liste.push({
-          id: `${consultationId}-${creneau.toISOString()}`,
+          id: `${consultationId}-${instant.toISOString()}`,
           consultation_id: consultationId,
-          date_heure: creneau.toISOString(),
+          date_heure: instant.toISOString(),
           reserve: false,
         });
       }

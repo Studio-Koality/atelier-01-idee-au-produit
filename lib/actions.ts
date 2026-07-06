@@ -64,7 +64,9 @@ export async function creerCreneau(formData: FormData) {
   const consultationId = String(formData.get("consultation") ?? "");
   const dateHeure = String(formData.get("date_heure") ?? "");
   if (consultationId && dateHeure) {
-    const iso = new Date(dateHeure).toISOString();
+    // datetime-local envoie une heure SANS fuseau : on la fixe au fuseau
+    // du cabinet avant de la stocker en ISO (vérification, boucle admin).
+    const iso = new Date(`${dateHeure}:00+02:00`).toISOString();
     ajouterCreneau(consultationId, iso);
   }
   redirect(`/admin?cle=${formData.get("cle")}`);
