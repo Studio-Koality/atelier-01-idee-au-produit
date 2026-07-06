@@ -1,13 +1,16 @@
 @import "tailwindcss";
 
-:root {
-  --creme: #faf6f0;
-  --encre: #2b2118;
-  --roux: #e07a3f;
-  --sauge: #7a9b76;
+/* Le thème Tailwind v4 vit ici, pas dans un tailwind.config.js.
+   Chaque couleur déclarée dans @theme devient une classe utilitaire :
+   --color-roux donne bg-roux, text-roux, border-roux, etc. */
+@theme {
+  --color-creme: #faf6f0;
+  --color-encre: #2b2118;
+  --color-roux: #e07a3f;
+  --color-sauge: #7a9b76;
 }
 
 body {
-  background: var(--creme);
-  color: var(--encre);
+  background: var(--color-creme);
+  color: var(--color-encre);
 }
