@@ -1,7 +1,7 @@
-# INTERVIEW — Faire cadrer son intention par l'agent
+# INTERVIEW · Faire cadrer son intention par l'agent
 
 > L'erreur classique : ouvrir l'agent et taper « fais-moi un site pour mon cabinet ».
-> Vous obtiendrez un site. Pas le vôtre.
+> Vous obtiendrez un site. Pas le vôtre. Vous l'avez d'ailleurs peut-être vécu pendant la phase de vibe coding.
 >
 > À la place, on inverse les rôles : **c'est l'agent qui vous interviewe.**
 > Copiez le prompt ci-dessous tel quel dans une nouvelle session.
@@ -31,19 +31,20 @@ Règles de l'interview :
 - **Les cas limites viennent de l'agent** : énumérer les scénarios tordus est
   exactement le genre de tâche où le modèle est meilleur que vous. Trancher,
   en revanche, c'est votre travail. Chacun son poste.
-- **La spec sort en fichier versionné** : elle servira de référence à toutes les
-  boucles de l'étape 3. Quand le code s'écartera de la spec, c'est la spec qui gagne.
+- **La spec sort en fichier versionné** : elle devient la source de vérité.
+  Quand le code s'écartera de la spec, c'est la spec qui gagne. Et quand le
+  RÉEL contredira la spec, c'est la spec qu'on amende, par écrit.
 
-## ⚡ Encart dev
+## Le scope négatif, la section qui rapporte le plus
 
-Ce pattern (l'agent interviewe, l'humain tranche) est une forme de
-*requirements-as-conversation* : la spec émerge du dialogue et reste exécutable.
-Pour aller plus loin : demandez à l'agent de générer, en plus de SPEC.md, des
-critères d'acceptation au format Given/When/Then. À l'étape 3, ils deviendront
-la check-list de vérification de chaque boucle. Vous venez d'écrire vos tests
-avant votre code, sans le dire à personne.
+La section 6 (« ce que le produit NE fait PAS ») est celle que tout le monde
+saute et c'est la plus rentable : chaque « non » écrit économise une boucle
+entière plus tard. Un agent sans scope négatif AJOUTE, avec les meilleures
+intentions du monde. C'est sa pente naturelle : elle se corrige par écrit,
+pas en le lui reprochant.
 
-## Signal de fin d'étape
+## Signal de fin
 
-Vous avez : `docs/SPEC.md` rempli, cas limites tranchés, `CLAUDE.md` mis à jour.
-Vous n'avez toujours PAS écrit de code. C'est exactement là où il faut être.
+Vous avez : `docs/SPEC.md` rempli, cas limites tranchés, `CLAUDE.md` qui pointe
+vers la spec. Vous n'avez toujours PAS écrit de code. C'est exactement là où
+il faut être.

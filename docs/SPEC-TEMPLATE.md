@@ -1,4 +1,4 @@
-# SPEC-TEMPLATE — L'archétype « Catalogue → Détail → Action »
+# SPEC-TEMPLATE · L'archétype « Catalogue → Détail → Action »
 
 > **Ce fichier est un gabarit à trous.** Vous le remplissez avec VOTRE sujet pendant
 > l'interview de cadrage (voir `INTERVIEW.md`). La quasi-totalité des idées de produit
@@ -11,8 +11,8 @@
 
 ## 1. L'intention en une phrase
 
-Mon produit permet à **[QUI — le visiteur type]** de **[ACTION — ce qu'il vient faire]**
-parmi **[ITEMS — ce que je propose]**, sans **[FRICTION — ce que ça remplace]**.
+Mon produit permet à **[QUI : le visiteur type]** de **[ACTION : ce qu'il vient faire]**
+parmi **[ITEMS : ce que je propose]**, sans **[FRICTION : ce que ça remplace]**.
 
 *Exemple : « Mon produit permet à un patient de réserver une consultation parmi les
 créneaux du cabinet, sans passer par le téléphone. »*
@@ -28,7 +28,7 @@ créneaux du cabinet, sans passer par le téléphone. »*
 
 - Quand le visiteur a choisi un item, il veut : **[ACTION]** (réserver, acheter, s'inscrire...)
 - Pour ça, j'ai besoin de lui demander : **[CHAMPS DU FORMULAIRE]** (nom, email...)
-- L'action est payante : **[OUI / NON]** — si oui, le prix est **[FIXE PAR ITEM / VARIABLE]**
+- L'action est payante : **[OUI / NON]**, si oui, le prix est **[FIXE PAR ITEM / VARIABLE]**
 - Une action réussie, c'est : **[CRITÈRE DE SUCCÈS observable]**
   *(ex : « le créneau n'est plus proposé aux autres et le patient voit une confirmation »)*
 
