@@ -1,11 +1,13 @@
-# 🎢 h0 · Vibe coding (le modèle nu)
+# 🧭 Vous êtes en atelier ?
 
-**La douleur qu'on fait vivre :** prompter sans filet.
+Un seul point d'entrée : **les sujets de TP**, dans [`docs/tp/`](docs/tp/).
 
-**À faire :**
-1. Sans CLAUDE.md, sans spec : « fais-moi une page de réservation ».
-2. Regardez ça marcher... puis tomber (build vert, écran faux).
+1. [TP1 · Le setup](docs/tp/TP1-le-setup.md) : commencez ici.
+2. [TP2 · Vibe coding](docs/tp/TP2-vibe-coding.md)
+3. [TP3 · Spec et boucle](docs/tp/TP3-spec-et-boucle.md)
+4. [TP4 · Déléguer avec /goal](docs/tp/TP4-deleguer-avec-goal.md)
+5. [TP5 · Synthèse](docs/tp/TP5-synthese.md)
 
-**Le harnais ici :** aucun. C'est le point de départ, exprès.
-**C'est fini quand :** ça marche à moitié et vous avez vu le mur.
-**Le concept :** la magie et son plafond.
+Chaque sujet est autoportant : consignes, contenus exacts à créer,
+points de vérification, et les explications pour refaire tout ça sur
+vos propres projets. Le reste du repo est la lecture du soir.
