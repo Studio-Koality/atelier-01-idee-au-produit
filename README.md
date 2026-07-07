@@ -1,86 +1,69 @@
-# Le harnais, barreau par barreau · Atelier 01
+# Travailler avec une IA qui code · Atelier 01
 
 Le repo de l'atelier [Koality Academy](https://academy.koality.fr/ateliers-ete/) :
-**apprendre à travailler avec un agent IA pour coder**, en gravissant un
-harnais barreau par barreau, du vibe coding au pilotage maîtrisé.
+une journée pour apprendre à travailler avec un agent IA, en montant un
+vrai environnement de travail et en s'en servant pour produire. Le
+produit construit en chemin (Cabinet Ronron, la réservation en ligne
+d'un cabinet de praticien) est un bac à sable : ce qu'on garde, c'est
+tout ce qu'il y a autour.
 
-Le produit construit en chemin (Cabinet Ronron, une réservation de
-consultations) est un bac à sable jetable. **Ce qui compte, c'est ce qui
-l'entoure** : le contexte, la spec, la boucle de vérification, les tools,
-les automatismes. À la fin, le code aura peu de valeur ; le harnais, si.
+## L'atelier en 5 TP
 
-> **Vous êtes en atelier, là, maintenant ?** Sur chaque branche, n'ouvrez
-> que [`ATELIER.md`](ATELIER.md) : 10 lignes, c'est tout ce qu'il vous faut.
-> Le reste est la lecture du soir et d'après.
+Chaque sujet est à la fois l'énoncé du jour J et le support de cours à
+emporter : tout ce qui est créé y est expliqué, justifié, avec sa
+notice d'adaptation pour VOS projets.
 
-## La montée
+| Sujet | Ce qu'on y fait | Durée |
+|---|---|---|
+| [TP1 · Le setup](docs/tp/TP1-le-setup.md) | monter l'environnement : règles, permissions, mémoire | ~45 min |
+| [TP2 · Vibe coding](docs/tp/TP2-vibe-coding.md) | travailler en direct, observer ce que ça donne | ~30 min |
+| [TP3 · Spec et boucle](docs/tp/TP3-spec-et-boucle.md) | la spec par interview, la vérification outillée, une boucle | ~60 min |
+| [TP4 · Déléguer avec /goal](docs/tp/TP4-deleguer-avec-goal.md) | confier une fonctionnalité entière, superviser, réceptionner | ~40 min |
+| [TP5 · Synthèse](docs/tp/TP5-synthese.md) | l'inventaire, le mémo à emporter, les portes ouvertes | ~20 min |
 
-Une branche par barreau. Chaque barreau naît d'une douleur vécue, ajoute
-UNE pièce de harnais qui la soigne, et nomme UN concept.
-
-| Branche | La douleur | La pièce ajoutée | Le concept |
-|---|---|---|---|
-| `h0-vibe` | build vert, écran faux | aucune, exprès | la magie a un plafond |
-| `h1-contexte` | l'agent devine, oublie | `CLAUDE.md`, le contrat | le contexte, fenêtre finie |
-| `h2-spec` | réexpliquer à chaque prompt | une spec + `/goal` | la spec gagne |
-| `h3-boucle` | « ça a l'air de marcher » | `/verifier` + le rapport | vérifier n'est pas builder |
-| `h4-tools` | l'agent ne sait pas faire X | une prise MCP | capacités = tools |
-| `h5-automatismes` | les gestes qui se répètent | un hook, une skill | encoder ses gestes |
-| `h6-carte` |  | la carte complète | le spectre vibe → agentic |
-
-Pour monter : `git checkout h0-vibe`, puis suivez les cartes. Pour voir ce
-qu'un barreau a ajouté exactement : `git diff h1-contexte h2-spec`, le diff
-EST la pièce. Et `git log --oneline` se lit comme un récit : c'est voulu.
-
-## Essayer tout de suite (n'importe quelle branche)
+## Démarrer
 
 ```bash
-npm install
-npm run dev
+git clone https://github.com/Studio-Koality/atelier-01-idee-au-produit.git
+cd atelier-01-idee-au-produit
+git checkout setup-depart
 ```
 
-- Parcours patient : http://localhost:3000
-- Admin praticien (à partir de `h3-boucle`) : http://localhost:3000/admin?cle=ronron-demo
+Puis ouvrez le TP1 et suivez. Tout tourne en local, sans aucun service
+externe ni aucune clé.
 
-Tout tourne en **mode démo**, sans aucun service externe ni aucune clé.
+## Les branches utiles
 
-## Les écarts sont vrais
+| Branche | Contenu |
+|---|---|
+| `setup-depart` | l'état de départ du TP1 : une coquille Next.js vide, et les 5 sujets dans `docs/tp/` |
+| `setup-complet` | la correction du TP1 : règles, permissions, mémoire en place |
+| `secours-produit` | un produit de référence (parcours patient + spec), si le vôtre est irrécupérable |
+| `secours-admin` | idem, avec la partie praticien construite |
 
-Le mur de `h0` (un build vert, un écran faux), l'écart du fuseau horaire de
-`h3` (le même « mar. 10h00 » qui désigne deux instants selon le serveur),
-l'incident du test qui ne pouvait rien voir : **aucun n'est inventé**. Tous
-ont été rencontrés en construisant ce repo, et chacun est reproductible
-(`docs/LE-MUR.md`, `docs/boucles/`).
-
-## Comment lire ce repo, après l'atelier
-
-- `docs/CARTE-DU-HARNAIS.md` (branche `h6-carte`) : la synthèse, le modèle
-  mental, où aller ensuite
-- `docs/boucles/` : les plans et rapports de vérification, étiquetés
-  testé / relu / non couvert
-- `CLAUDE.md` + `.claude/` + `.mcp.json` : le harnais complet, versionné
-  comme du code, parce que c'en est
-- `docs/SPEC-TEMPLATE.md` + `docs/INTERVIEW.md` : de quoi rejouer la
-  méthode sur VOTRE idée
+Les états de référence ont été construits avec la méthode que l'atelier
+enseigne, pendant sa préparation : rien n'y est décoratif.
 
 ## Les règles du repo
 
-1. **Tout est committé** : specs, plans, config, `.env` de démo, mémoire de
-   l'agent. Seuls les vendors sont ignorés. Aucune vraie clé, nulle part.
-2. **La spec gagne toujours.** Quand le code diverge, on corrige le code ;
-   quand le réel contredit la spec, on l'amende par écrit.
-3. **Un rapport de vérification étiquette** : testé / relu / non couvert.
+1. **Tout est committé** : les règles de l'agent, sa config, ses
+   commandes, sa mémoire. Cet outillage fait partie du projet, au même
+   titre que le code. Seuls les vendors sont ignorés.
+2. **Aucune vraie clé, nulle part.** La seule « clé » du projet est
+   celle de l'admin de démo, committée exprès.
+3. **La spec gagne.** Quand le code et `docs/SPEC.md` divergent, on
+   corrige le code ou on amende la spec par écrit. Jamais l'inverse en
+   silence.
 
 ## L'ancien parcours
 
 Les branches `step-0-setup` à `step-4-deploy` portent une version
-antérieure de l'atelier, centrée sur les étapes du produit (maquette,
-Supabase, Stripe, déploiement). Elles restent lisibles et fonctionnelles,
-notamment `docs/DEPLOIEMENT.md` et `docs/COUTS.md` pour qui veut mettre
-son produit en ligne pour de vrai.
+antérieure de l'atelier, orientée étapes produit (maquette, Supabase,
+Stripe, déploiement). Elles restent lisibles, notamment
+`docs/DEPLOIEMENT.md` et `docs/COUTS.md` pour qui veut mettre son
+produit en ligne pour de vrai.
 
 ---
 
 Atelier conçu par [Koality Academy](https://academy.koality.fr). Repo
-construit avec la méthode qu'il enseigne, boucles, écarts et incidents
-compris.
+construit avec la méthode qu'il enseigne.

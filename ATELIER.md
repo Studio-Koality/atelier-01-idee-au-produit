@@ -1,15 +1,13 @@
-# 🎯 Le jour J, votre boussole
+# 🧭 Vous êtes en atelier ?
 
-Chaque étape de l'atelier a sa branche, et chaque branche a sa carte `ATELIER.md` :
-quoi faire, c'est fini quand, où creuser.
+Un seul point d'entrée : **les sujets de TP**, dans [`docs/tp/`](docs/tp/).
 
-| Quand l'animateur dit | Vous tapez |
-|---|---|
-| « Étape 0 » | `git checkout step-0-setup` |
-| « Étape 1 » | `git checkout step-1-intention` |
-| « Étape 2 » | `git checkout step-2-maquette` |
-| « Étape 3 » | `git checkout step-3-boucles` |
-| « Étape 4 » | `git checkout step-4-deploy` |
+1. [TP1 · Le setup](docs/tp/TP1-le-setup.md) : commencez ici.
+2. [TP2 · Vibe coding](docs/tp/TP2-vibe-coding.md)
+3. [TP3 · Spec et boucle](docs/tp/TP3-spec-et-boucle.md)
+4. [TP4 · Déléguer avec /goal](docs/tp/TP4-deleguer-avec-goal.md)
+5. [TP5 · Synthèse](docs/tp/TP5-synthese.md)
 
-Perdu ? Checkout de l'étape en cours et vous repartez d'un état propre.
-Tout le reste de ce repo est de la lecture pour après : commencez par `README.md`.
+Chaque sujet est autoportant : consignes, contenus exacts à créer,
+points de vérification, et les explications pour refaire tout ça sur
+vos propres projets. Le reste du repo est la lecture du soir.
