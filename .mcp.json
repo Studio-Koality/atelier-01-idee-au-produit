@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "memoire": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "env": {
+        "MEMORY_FILE_PATH": ".claude/memoire.json"
+      }
+    }
+  }
+}
